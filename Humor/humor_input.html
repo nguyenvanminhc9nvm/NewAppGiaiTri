@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <script>
+        function validateForm() {
+            var input = document.getElementsByTagName("input");
+            var dlsp = document.getElementsByTagName("span");
+            var textarea = document.getElementsByTagName("textarea");
+            for (var i = 0; i < input.length; i++) {
+                if (input[i].value.charAt(0) == " ") {
+                    dlsp[i].innerHTML = "(*) Dữ Liệu không hợp lệ";
+                    input[i].style.border = "1px solid red";
+                    return false
+                } else {
+                    dlsp[i].innerHTML = "";
+                    input[i].style.border = "1px solid green";
+                }
+                if (input[0].value == "") {
+                    dlsp[0].innerHTML = "(*) Nhập đủ dữ liệu";
+                    input[0].style.border = "1px solid red";
+                    return false
+                } else {
+                    dlsp[0].innerHTML = "";
+                    input[0].style.border = "1px solid green";
+                }
+                if (input[2].value == "") {
+                    dlsp[2].innerHTML = "(*) Nhập đủ dữ liệu";
+                    input[2].style.border = "1px solid red";
+                    return false
+                } else {
+                    dlsp[2].innerHTML = "";
+                    input[2].style.border = "1px solid green";
+                }
+                if (input[1].value == "") {
+                    dlsp[1].innerHTML = "(*) Nhập đủ dữ liệu";
+                    input[1].style.border = "1px solid red";
+                    return false
+                } else {
+                    dlsp[1].innerHTML = "";
+                    input[1].style.border = "1px solid green";
+                }
+                if (100 < input[1].value.length < 0) {
+                    dlsp[1].innerHTML = "(*) Số tầng không hợp lệ";
+                    input[1].style.border = "1px solid red";
+                    return false
+                } else {
+                    dlsp[1].innerHTML = "";
+                    input[1].style.border = "1px solid green";
+                }
+                if (input[3].files.length == 0) {
+                    dlsp[3].innerHTML = "(*) Vui lòng chọn 1 tệp ảnh";
+                    return false
+                } else {
+                    dlsp[3].innerHTML = "";
+                }
+            }
+            for (var i = 0; i < textarea.length; i++) {
+                if (textarea[i].value == "") {
+                    dlsp[4].innerHTML = "(*) Nhập đủ dữ liệu";
+                    textarea[i].style.border = "1px solid red";
+                    return false
+                } else {
+                    dlsp[4].innerHTML = "";
+                    textarea[i].style.border = "1px solid green";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">AppGiaiTri</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Humor/index.html">Humor <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Comic/comic.html">Comic</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sport/sport.html">Sport</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Tech/tech.html">Tech</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Humor Input</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form role="form" name="myForm" method="post" onsubmit="return validateForm()" action="uploadimage.php"
+                    enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label class="loginFormElement">Tiêu đề:</label>
+                        <input name="room_number" class="form-control" type="text" id="rn">
+                        <span style="color: red;" id="span"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="productprice" class="loginFormElement">Nội dung</label>
+                        <textarea name="detail" class="form-control" type="text"></textarea>
+                        <span style="color: red;" id="span"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Chọn ảnh</label>
+                        <input name="image" class="filestyle" id="image_upload" data-icon="false" type="file"
+                            accept="image/x-png,image/gif,image/jpeg">
+                        <span style="color: red;" id="span_image"></span>
+                    </div>
+                    <div class="container">
+                        <a type="submit" id="loginSubmit" class="btn btn-danger loginFormElement" href="/Humor/index.html">back</a>
+                        <button type="submit" id="loginSubmit" class="btn btn-primary loginFormElement">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
