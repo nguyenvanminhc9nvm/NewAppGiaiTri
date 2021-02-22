@@ -104,38 +104,35 @@
         </div>
     </nav>
     <div class="container">
-
         <div class="row">
             <div class="col-md-6">
                 <h1>Humor Input</h1>
             </div>
         </div>
+        <?php echo php_info(); ?>
         <div class="row">
             <div class="col-md-6">
-                <form role="form" name="myForm" method="post" onsubmit="return validateForm()" action="uploadimage.php"
-                    enctype="multipart/form-data">
-
-                    <div class="form-group">
-                        <label class="loginFormElement">Tiêu đề:</label>
-                        <input name="room_number" class="form-control" type="text" id="rn">
-                        <span style="color: red;" id="span"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="productprice" class="loginFormElement">Nội dung</label>
-                        <textarea name="detail" class="form-control" type="text"></textarea>
-                        <span style="color: red;" id="span"></span>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Chọn ảnh</label>
-                        <input name="image" class="filestyle" id="image_upload" data-icon="false" type="file"
-                            accept="image/x-png,image/gif,image/jpeg">
-                        <span style="color: red;" id="span_image"></span>
-                    </div>
-                    <div class="container">
-                        <a type="submit" id="loginSubmit" class="btn btn-danger loginFormElement" href="/Humor/index.html">back</a>
-                        <button type="submit" id="loginSubmit" class="btn btn-primary loginFormElement">Submit</button>
-                    </div>
-                </form>
+                <div class="bd-example">
+                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="inputTitle">Tiêu đề (<span class="text-danger">*</span>)</label>
+                            <input class="form-control" id="inputTitle" name="title" aria-describedby="titleHelp" placeholder="Nhập tiêu đề">
+                            <small id="titleHelp" class="form-text text-muted d-none">Chưa nhập title</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputContent">Nội dung</label>
+                            <textarea class="form-control" id="inputContent" name="content" placeholder="Nhập nội dung" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputImage">Chọn ảnh</label>
+                            <input type="file" name="image" class="form-control-file" id="inputImage" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <a href="../Humor/index.html" class="btn btn-danger">Back</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <!-- /.container -->
