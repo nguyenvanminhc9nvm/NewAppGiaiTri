@@ -29,6 +29,35 @@
 </head>
 
 <body>
+<?php
+	require "./Humor/connect.php";
+	$query = "SELECT * FROM humor";
+	$data = mysqli_query($conn,$query);
+	$humors = array();
+	while ($row = mysqli_fetch_assoc($data)) {
+		array_push($humors,new Humor(
+			$row['id'],
+			$row['title'],
+			$row['image_url'],
+			$row['content']
+		));
+	}
+  echo
+	/**
+	 * 
+	 */
+	class Humor 
+	{
+	
+		function Humor($id,$title,$image_url,$content)
+		{
+			$this ->id = $id;
+			$this ->title = $title;
+			$this ->image_url = $image_url;
+			$this ->content = $content;
+		}
+	}
+?>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">AppGiaiTri</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -57,39 +86,14 @@
   <div class="container">
     <div class="row">
       <div class="col-sm">
-
-        <div class="card">
+     <div class="card">
           <img class="card-img-top" src="..." alt="Card image cap">
           <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
+            <p class="card-text">$title</p>
           </div>
         </div>
 
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-              content.</p>
-          </div>
-        </div>
-
+      
       </div>
       <div class="col-sm">
         <a type="button" class="btn btn-primary" href="/NewAppGiaiTri/Humor/humor_input.php">Post</a>
