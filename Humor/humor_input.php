@@ -1,5 +1,39 @@
+
+<?php
+    require "connect.php";
+    $titles = $_POST['title'];
+    $content = $_POST['content'];
+    
+    $msg = "";
+    // If upload button is clicked ... 
+  if (isset($_POST['upload'])) {
+        $filename = $_FILES['image']['name']; 
+        $tempname = $_FILES['image']['tmp_name'];     
+        $folder = 'uploads/'.basename($filename);
+    
+        // // Get all the submitted data from the form 
+        // $sql = "INSERT INTO humor VALUES (1, '$titles', '$filename', '$content')"; 
+  
+        // // Execute query 
+        // if (mysqli_query($conn, $sql)) {
+        //     echo "insert success";
+        // } else {
+        //     echo "insert failed";
+        // }
+          
+        // Now let's move the uploaded image into the folder: image 
+        if (move_uploaded_file($tempname, $folder))  { 
+            echo $filename;
+        } else { 
+            echo " Failed to upload image"; 
+        } 
+  } 
+?>
+
 <!doctype html>
 <html lang="en">
+
+
 
 <head>
     <!-- Required meta tags -->
@@ -89,16 +123,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/Humor/index.html">Humor <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/NewAppGiaiTri/index.php">Humor <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Comic/comic.html">Comic</a>
+                    <a class="nav-link" href="/NewAppGiaiTri/Comic/comic.html">Comic</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Sport/sport.html">Sport</a>
+                    <a class="nav-link" href="/NewAppGiaiTri/Sport/sport.html">Sport</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Tech/tech.html">Tech</a>
+                    <a class="nav-link" href="/NewAppGiaiTri/Tech/tech.html">Tech</a>
                 </li>
             </ul>
         </div>
@@ -109,11 +143,10 @@
                 <h1>Humor Input</h1>
             </div>
         </div>
-        <?php echo php_info(); ?>
         <div class="row">
             <div class="col-md-6">
                 <div class="bd-example">
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <form action="" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="inputTitle">Tiêu đề (<span class="text-danger">*</span>)</label>
                             <input class="form-control" id="inputTitle" name="title" aria-describedby="titleHelp" placeholder="Nhập tiêu đề">
@@ -128,8 +161,8 @@
                             <input type="file" name="image" class="form-control-file" id="inputImage" accept="image/*">
                         </div>
                         <div class="form-group">
-                            <a href="../Humor/index.html" class="btn btn-danger">Back</a>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="/NewAppGiaiTri/index.php" class="btn btn-danger">Back</a>
+                            <button type="submit" class="btn btn-primary" name="upload">Submit</button>
                         </div>
                     </form>
                 </div>

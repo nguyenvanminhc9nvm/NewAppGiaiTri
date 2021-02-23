@@ -8,14 +8,7 @@
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
-    }
-    $sql = "INSERT INTO MyGuests (firstname, lastname, email) VALUES ('John', 'Doe', 'john@example.com')";
-
-    if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
     } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Connect success";
     }
-
-    $conn->close();
 ?>
