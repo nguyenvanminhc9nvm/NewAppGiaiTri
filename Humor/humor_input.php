@@ -9,10 +9,10 @@
         $content = $_POST['content'];
         $filename = $_FILES['image']['name']; 
         $tempname = $_FILES['image']['tmp_name'];     
-        $folder = 'uploads/'.basename($filename);
+        $folder = '../uploads/'.basename($filename);
     
         // // Get all the submitted data from the form 
-        $sql = "INSERT INTO humor VALUES (1, '$titles', '$filename', '$content')"; 
+        $sql = "INSERT INTO humor VALUES ('$titles', '$filename', '$content')"; 
   
         // Execute query 
         if (mysqli_query($conn, $sql)) {
