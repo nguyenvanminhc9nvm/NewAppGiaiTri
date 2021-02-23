@@ -1,25 +1,25 @@
 
 <?php
-    require "connect.php";
-    $titles = $_POST['title'];
-    $content = $_POST['content'];
-    
+   
     $msg = "";
     // If upload button is clicked ... 
   if (isset($_POST['upload'])) {
+        require "connect.php";
+        $titles = $_POST['title'];
+        $content = $_POST['content'];
         $filename = $_FILES['image']['name']; 
         $tempname = $_FILES['image']['tmp_name'];     
         $folder = 'uploads/'.basename($filename);
     
         // // Get all the submitted data from the form 
-        // $sql = "INSERT INTO humor VALUES (1, '$titles', '$filename', '$content')"; 
+        $sql = "INSERT INTO humor VALUES (1, '$titles', '$filename', '$content')"; 
   
-        // // Execute query 
-        // if (mysqli_query($conn, $sql)) {
-        //     echo "insert success";
-        // } else {
-        //     echo "insert failed";
-        // }
+        // Execute query 
+        if (mysqli_query($conn, $sql)) {
+            echo "insert success";
+        } else {
+            echo "insert failed";
+        }
           
         // Now let's move the uploaded image into the folder: image 
         if (move_uploaded_file($tempname, $folder))  { 
@@ -158,7 +158,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputImage">Chọn ảnh</label>
-                            <input type="file" name="image" class="form-control-file" id="inputImage" accept="image/*">
+                            <input type="file" name="image" class="form-control-file" id="inputImage" accept="image/*" />
                         </div>
                         <div class="form-group">
                             <a href="/NewAppGiaiTri/index.php" class="btn btn-danger">Back</a>
