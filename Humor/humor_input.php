@@ -4,21 +4,22 @@
     $msg = "";
     // If upload button is clicked ... 
   if (isset($_POST['upload'])) {
-        require "connect.php";
+        require "../connect.php";
         $titles = $_POST['title'];
         $content = $_POST['content'];
         $filename = $_FILES['image']['name']; 
         $tempname = $_FILES['image']['tmp_name'];     
-        $folder = '../uploads/'.basename($filename);
+        $folder = '../uploads/humor'.basename($filename);
+        $date = date('Y-m-d H:i:s');
     
         // // Get all the submitted data from the form 
-        $sql = "INSERT INTO humor VALUES ('$titles', '$filename', '$content')"; 
+        $sql = "INSERT INTO humor VALUES (null, '$titles', '$filename', '$content', '$date')"; 
   
         // Execute query 
         if (mysqli_query($conn, $sql)) {
             echo "insert success";
         } else {
-            echo "insert failed";
+            echo("Error description: " . $conn -> error);
         }
           
         // Now let's move the uploaded image into the folder: image 
@@ -126,13 +127,13 @@
                     <a class="nav-link" href="/NewAppGiaiTri/index.php">Humor <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/NewAppGiaiTri/Comic/comic.html">Comic</a>
+                    <a class="nav-link" href="/NewAppGiaiTri/Comic/comic.php">Comic</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/NewAppGiaiTri/Sport/sport.html">Sport</a>
+                    <a class="nav-link" href="/NewAppGiaiTri/Sport/sport.php">Sport</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/NewAppGiaiTri/Tech/tech.html">Tech</a>
+                    <a class="nav-link" href="/NewAppGiaiTri/Tech/tech.php">Tech</a>
                 </li>
             </ul>
         </div>

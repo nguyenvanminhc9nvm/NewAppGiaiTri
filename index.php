@@ -30,8 +30,8 @@
 
 <body>
 <?php
-	require "./Humor/connect.php";
-	$query = "SELECT * FROM humor";
+	require "./connect.php";
+	$query = "SELECT * FROM humor order by create_at desc";
 	$data = mysqli_query($conn,$query);
 	$humors = array();
 	while ($row = mysqli_fetch_assoc($data)) {
@@ -39,22 +39,23 @@
 			$row['id'],
 			$row['title'],
 			$row['image_url'],
-			$row['content']
+      $row['content'],
+      $row['create_at']
 		));
 	}
-  echo
 	/**
 	 * 
 	 */
 	class Humor 
 	{
 	
-		function Humor($id,$title,$image_url,$content)
+		function Humor($id,$title,$image_url,$content, $create_at)
 		{
 			$this ->id = $id;
 			$this ->title = $title;
 			$this ->image_url = $image_url;
-			$this ->content = $content;
+      $this ->content = $content;
+      $this ->create_at = $create_at;
 		}
 	}
 ?>
@@ -71,29 +72,25 @@
           <a class="nav-link" href="/NewAppGiaiTri/index.php">Humor <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/NewAppGiaiTri/Comic/comic.html">Comic</a>
+          <a class="nav-link" href="/NewAppGiaiTri/Comic/comic.php">Comic</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/NewAppGiaiTri/Sport/sport.html">Sport</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/NewAppGiaiTri/Tech/tech.html">Tech</a>
+          <a class="nav-link" href="/NewAppGiaiTri/Sport/sport.php">Sport</a>
         </li>
       </ul>
     </div>
   </nav>
-
   <div class="container">
     <div class="row">
       <div class="col-sm">
+      <?php foreach($humors as $humor) {?>
      <div class="card">
-          <img class="card-img-top" src="..." alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">$title</p>
-          </div>
+        <img class="card-img-top" src="http://localhost:8080/NewAppGiaiTri/uploads/<?php echo $humor->image_url?>" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text"><?php echo $humor->title?></p>
         </div>
-
-      
+     </div>
+     <?php } ?>
       </div>
       <div class="col-sm">
         <a type="button" class="btn btn-primary" href="/NewAppGiaiTri/Humor/humor_input.php">Post</a>

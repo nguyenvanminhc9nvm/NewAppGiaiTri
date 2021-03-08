@@ -1,5 +1,5 @@
 <?php
-	require "connect.php";
+	require "./connect.php";
 	$query = "SELECT * FROM humor";
 	$data = mysqli_query($conn,$query);
 	$humors = array();
