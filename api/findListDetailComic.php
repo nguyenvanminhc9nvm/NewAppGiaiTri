@@ -2,6 +2,7 @@
 <?php
 	require "../connect.php";
 	$result_per_page = 10;
+	$name = $_GET['name'];
 	$comicId = $_GET['comicId'];
 	if(!isset($_GET['page'])){
 	    $page = 1;
@@ -9,7 +10,7 @@
 	    $page = $_GET['page'];
 	}
 	$this_page_first_result = ($page-1)*$result_per_page;
-	$sql = "SELECT * FROM detail_comic where comic_id='$comicId' order by create_at desc  LIMIT " . $this_page_first_result . ',' . $result_per_page;
+	$sql = "SELECT * FROM detail_comic where comic_id='$comicId' and name_comic like '%$name%' order by create_at desc  LIMIT " . $this_page_first_result . ',' . $result_per_page;
 	$result = mysqli_query($conn, $sql);
 	$listhomestay = array();
 	while ($row = mysqli_fetch_assoc($result)) {

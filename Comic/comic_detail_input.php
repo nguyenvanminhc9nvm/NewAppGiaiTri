@@ -6,6 +6,7 @@
  if (isset($_POST['upload'])) {
        require "../connect.php";
        $comicId = $_POST['comicId'];
+       $nameComic = $_POST['nameComic'];
        $description = $_POST['description'];
        $filenameAuthor = $_FILES['image_url']['name'];
        $tempFilenameAuthor = $_FILES['image_url']['tmp_name'];
@@ -13,7 +14,7 @@
        $date = date('Y-m-d H:i:s');
    
        // // Get all the submitted data from the form 
-       $sql = "INSERT INTO detail_comic VALUES (null, '$comicId', '$filenameAuthor', '$description', '$date')"; 
+       $sql = "INSERT INTO detail_comic VALUES (null, '$comicId', '$filenameAuthor', '$description', '$date', '$nameComic')"; 
  
        // Execute query 
        if (mysqli_query($conn, $sql)) {
@@ -88,6 +89,10 @@
                            <label for="ipNameImage">Comic Id (<span id="spNameImage" class="text-danger">*</span>)</label>
                            <input class="form-control" id="ipNameImage" name="comicId" aria-describedby="titleHelp" placeholder="Nhập tiêu đề">
                            <small id="titleHelp" class="form-text text-muted d-none">Chưa nhập title</small>
+                       </div>
+                       <div class="form-group">
+                           <label for="ipnameComic">Tên truyện (<span id="spnameComic" class="text-danger">*</span>)</label>
+                           <textarea class="form-control" id="ipnameComic" name="nameComic" class="form-control-file" ></textarea>
                        </div>
                        <div class="form-group">
                            <label for="ipDescription">Nội dung (<span id="spDescription" class="text-danger">*</span>)</label>

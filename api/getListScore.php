@@ -15,6 +15,7 @@
       $row['type'],
 		));
 	}
+	echo json_encode($scores);
 	/**
 	 * 
 	 */
