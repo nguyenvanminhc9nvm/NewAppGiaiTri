@@ -6,13 +6,14 @@
  if (isset($_POST['upload'])) {
        require "../connect.php";
        $position = $_POST['position'];
+       $comic_id = $_POST['comicId'];
        $filenameImage = $_FILES['comic_image']['name'];
        $tempFilenameImage = $_FILES['comic_image']['tmp_name'];
        $folderImage = '../uploads/comic/image/detail/description/'.basename($filenameImage);
        $date = date('Y-m-d H:i:s');
    
        // // Get all the submitted data from the form 
-       $sql = "INSERT INTO decription_comic VALUES (null, '$filenameImage', '$position')"; 
+       $sql = "INSERT INTO decription_comic VALUES (null, '$filenameImage', '$position', '$comic_id')"; 
  
        // Execute query 
        if (mysqli_query($conn, $sql)) {
@@ -82,6 +83,11 @@
            <div class="col-md-6">
                <div class="bd-example">
                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                           <label for="ipNameImage">Comic Id (<span id="spNameImage" class="text-danger">*</span>)</label>
+                           <input class="form-control" id="ipNameImage" name="comicId" aria-describedby="titleHelp" placeholder="Nhập tiêu đề">
+                           <small id="titleHelp" class="form-text text-muted d-none">Chưa nhập title</small>
+                       </div>
                        <div class="form-group">
                            <label for="ipNameImage">position (<span id="spNameImage" class="text-danger">*</span>)</label>
                            <input class="form-control" id="ipNameImage" name="position" aria-describedby="titleHelp" placeholder="Nhập tiêu đề">

@@ -9,7 +9,8 @@
 		array_push($listhomestay,new Comic(
 			$row['id'],
 			$row['image_url'],
-            $row['position'],
+			$row['position'],
+			$row['comic_id'],
 		));
 	}
 	echo json_encode($listhomestay);
@@ -20,11 +21,12 @@
 	class Comic 
 	{
 	
-		function Comic($id,$image_url,$position)
+		function Comic($id,$image_url,$position, $comicId)
 		{
 			$this ->id = $id;
 			$this ->position = $position;
 			$this ->image_url = $image_url;
+			$this ->comic_id = $comicId;
 		}
 	}
 ?>
