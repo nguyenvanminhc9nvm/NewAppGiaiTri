@@ -20,6 +20,7 @@
             $row['description'],
 			$row['create_at'],
 			$row['name_comic'],
+			$row['description_comic_id'],
 		));
 	}
 	echo json_encode($listhomestay);
@@ -30,7 +31,7 @@
 	class Comic 
 	{
 	
-		function Comic($id,$comic_id,$image_url,$description, $create_at, $name_comic)
+		function Comic($id,$comic_id,$image_url,$description, $create_at, $name_comic, $descriptionComicId)
 		{
 			$this ->id = $id;
 			$this ->comic_id = $comic_id;
@@ -38,6 +39,7 @@
             $this ->description = $description;
 			$this ->create_at = $create_at;
 			$this ->name_comic = $name_comic;
+			$this ->description_comic_id = $descriptionComicId;
 		}
 	}
 ?>

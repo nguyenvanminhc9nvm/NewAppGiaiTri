@@ -19,7 +19,7 @@
             $row['avatar_author'],
             $row['comic_image'],
             $row['create_at'],
-            $row['description'],
+			$row['description'],
 		));
 	}
 	echo json_encode($listhomestay);
@@ -38,7 +38,7 @@
             $this ->avatar_author = $avatar_author;
             $this ->comic_image = $comic_image;
             $this ->create_at = $create_at;
-            $this ->description = $description;
+			$this ->description = $description;
 		}
 	}
 ?>
